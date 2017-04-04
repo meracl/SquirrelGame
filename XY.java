@@ -1,46 +1,56 @@
 final public class XY {
+	public int x;
+	public int y;
 
-	static Entity moveRight(Entity entity) {
-		entity.y++;
-		return entity;
+	public XY(int x, int y) {
+		this.x = x;
+		this.y = y;
 	}
 
-	static Entity moveLeft(Entity entity) {
-		entity.y--;
-		return entity;
+	public String toString() {
+		return "x: " + this.x + " y: " + this.y;
 	}
-
-	static Entity moveDown(Entity entity) {
-		entity.x++;
-		return entity;
-	}
-
-	static Entity moveUp(Entity entity) {
-		entity.x--;
-		return entity;
-	}
-
-	static Entity moveUpRight(Entity entity) {
-		 entity.y++;
-		 entity.x--;
-		 return entity;
-	}
-
-	static Entity moveUpLeft(Entity entity) {
-		entity.y--;
-		entity.x--;
-		return entity;
-	}
-
-	static Entity moveDownRight(Entity entity) {
-		entity.y++;
-		entity.x++;
-		return entity;
-	}
-
-	static Entity moveDownLeft(Entity entity) {
-		entity.y--;
-		entity.x++;
-		return entity;
-	}
+	// static Entity moveRight(Entity entity) {
+	// entity.x++;
+	// return entity;
+	// }
+	//
+	// static Entity moveLeft(Entity entity) {
+	// entity.x--;
+	// return entity;
+	// }
+	//
+	// static Entity moveDown(Entity entity) {
+	// entity.y++;
+	// return entity;
+	// }
+	//
+	// static Entity moveUp(Entity entity) {
+	// entity.y--;
+	// return entity;
+	// }
+	//
+	// static Entity moveUpRight(Entity entity) {
+	// entity.x++;
+	// entity.y--;
+	// return entity;
+	// }
+	//
+	// static Entity moveUpLeft(Entity entity) {
+	// entity.x--;
+	// entity.y--;
+	// return entity;
+	// }
+	//
+	// static Entity moveDownRight(Entity entity) {
+	// entity.x++;
+	// entity.y++;
+	// return entity;
+	// }
+	//
+	// static Entity moveDownLeft(Entity entity) {
+	// entity.x--;
+	// entity.y++;
+	// return entity;
+	// }
 }
