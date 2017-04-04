@@ -1,10 +1,9 @@
 
 public class GoodPlant extends Entity {
-	final static int energy = 100;
-	final static int id = 2;
+	final static int ENERGY = 100;
 
-	public GoodPlant(int x, int y) {
-		super(id, energy, x, y);
+	public GoodPlant(int id, XY xy) {
+		super(id, ENERGY, xy);
 	}
 
 	public String toString() {
