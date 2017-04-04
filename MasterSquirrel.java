@@ -1,14 +1,12 @@
 
 public class MasterSquirrel extends Entity {
-	static int energy = 1000;
-	final static int id = 5;
+	private static XY xy = new XY(0, 0);
 
-	public MasterSquirrel() {
-		super(id, energy, 0, 0);
+	public MasterSquirrel(int id) {
+		super(id, 1000, xy);
 	}
 
-	public String toString() {
-		return "MasterSquirrel mit ID: " + getId() + " Energy: " + getEnergy() + " Koordinaten x: " + getX() + " y: "
-				+ getY();
+	void nextStep() {
+		this.xy = HandOperatedMasterSquirrel.squirrelStep(xy);
 	}
 }
