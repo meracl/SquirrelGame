@@ -1,8 +1,10 @@
 
 public class EntitySet {
+	private static Entity[] entitySet = new Entity[11];
+
 	public static Entity[] createEntitys() {
-		Entity[] entitySet = new Entity[10];
 		int i = 1;
+		addEntity(new HandOperatedMasterSquirrel(i++), entitySet);
 		GoodBeast gb1 = new GoodBeast(i++, new XY(9, 9));
 		addEntity(gb1, entitySet);
 		GoodBeast gb2 = new GoodBeast(i++, new XY(4, 4));
@@ -39,12 +41,8 @@ public class EntitySet {
 
 	}
 
-	public static void deleteEntity(Entity test, Entity[] entitySet) {
-		for (int i = 0; i <= entitySet.length - 1; i++) {
-			if (entitySet[i] == test) {
-				entitySet[i] = null;
-			}
-		}
+	public static void deleteEntity(int j) {
+		entitySet[j] = null;
 	}
 
 	public static String toString(Entity[] entitySet) {
@@ -59,4 +57,40 @@ public class EntitySet {
 		return s;
 	}
 
+	public static void runAll() {
+		int msloc = 0;
+		for (int i = 0; i <= entitySet.length - 1; i++) {
+			if (!(entitySet[i] instanceof HandOperatedMasterSquirrel)) {
+				if (entitySet[i] != null)
+					entitySet[i].nextStep();
+			} else
+				msloc = i;
+		}
+		entitySet[msloc].nextStep();
+		System.out.println(toString(entitySet));
+	}
+
+	public static boolean possibleMove(int x, int y, int id) {
+		for (int i = 0; i <= entitySet.length - 1; i++) {
+			if (entitySet[i] != null) {
+				if ((entitySet[i].getXy().x == x) && (entitySet[i].getXy().y == y) && (entitySet[i].getId() != id)) {
+					entitySet[findId(id)].updateEnergy(entitySet[i].getEnergy());
+					if (entitySet[i] instanceof Wall) {
+						return false;
+					}
+					deleteEntity(i);
+					break;
+				}
+			}
+		}
+		return true;
+	}
+
+	public static int findId(int id) {
+		for (int i = 0; i <= entitySet.length; i++) {
+			if (entitySet[i].getId() == id)
+				return i;
+		}
+		return 0;
+	}
 }
