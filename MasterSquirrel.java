@@ -1,12 +1,11 @@
 
-public class MasterSquirrel extends Entity {
-	private static XY xy = new XY(0, 0);
+public class MasterSquirrel extends Squirrel {
 
-	public MasterSquirrel(int id) {
+	public MasterSquirrel(int id, XY xy) {
 		super(id, 1000, xy);
 	}
 
 	void nextStep() {
-		this.xy = HandOperatedMasterSquirrel.squirrelStep(xy);
+
 	}
 }
