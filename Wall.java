@@ -6,7 +6,9 @@ public class Wall extends Entity {
 		super(id, ENERGY, xy);
 	}
 
-	void updateEnergy(int delta) {
+
+	void nextStep() {
+
 	}
 
 }
