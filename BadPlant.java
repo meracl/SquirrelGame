@@ -6,4 +6,9 @@ public class BadPlant extends Entity {
 		super(id, ENERGY, xy);
 	}
 
+	void nextStep() {
+
+	}
+
+
 }
