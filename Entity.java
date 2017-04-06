@@ -10,44 +10,6 @@ abstract class Entity {
 		this.xy = xy;
 	}
 
-	// static void nextStep(Entity entity) {
-	// if (entity != null) {
-	// int id = entity.id;
-	// int dir = 5;
-	// if (id == 5) {
-	// Scanner step = new Scanner(System.in);
-	// dir = step.nextInt();
-	// } else if ((id == 0) | (id == 1) | (id == 6)) {
-	// dir = (int) (Math.random() * 9);
-	// }
-	// switch (dir) {
-	// case 1:
-	// XY.moveDownLeft(entity);
-	// break;
-	// case 2:
-	// XY.moveDown(entity);
-	// break;
-	// case 3:
-	// XY.moveDownRight(entity);
-	// break;
-	// case 4:
-	// XY.moveLeft(entity);
-	// break;
-	// case 6:
-	// XY.moveRight(entity);
-	// break;
-	// case 7:
-	// XY.moveUpLeft(entity);
-	// break;
-	// case 8:
-	// XY.moveUp(entity);
-	// break;
-	// case 9:
-	// XY.moveUpRight(entity);
-	// }
-	// }
-	// }
-
 	int getId() {
 		return id;
 	}
@@ -65,11 +27,20 @@ abstract class Entity {
 	}
 
 	void nextStep() {
-
+		move();
 	}
 
 	public String toString() {
 		return this.getClass() + " mit ID: " + getId() + " Energy: " + getEnergy() + " Koordinaten " + xy;
+	}
+	public void move() {
+		int x=xy.x+randomVek();
+		int y=xy.y+randomVek();
+		this.xy=new XY(x,y);
+	}
+	public static int randomVek(){
+		int i=(int) (Math.random()*3)-1;
+		return i;
 	}
 
 }
