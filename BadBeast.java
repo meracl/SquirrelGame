@@ -5,4 +5,6 @@ public class BadBeast extends Entity {
 		super(id, ENERGY, xy);
 	}
 
+	void updateEnergy(int delta) {
+	}
 }
