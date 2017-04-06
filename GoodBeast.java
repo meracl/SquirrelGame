@@ -4,6 +4,9 @@ public class GoodBeast extends Entity {
 
 	public GoodBeast(int id, XY xy) {
 		super(id, ENERGY, xy);
+
 	}
 
+	void updateEnergy(int delta) {
+	}
 }
