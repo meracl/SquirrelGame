@@ -1,6 +1,6 @@
 
-public class MinniSquirrel extends Entity {
-	public MinniSquirrel(int id,int energy, XY xy) {
+public class MinniSquirrel extends Squirrel {
+	public MinniSquirrel(int id, int energy, XY xy) {
 		super(id, energy, xy);
 	}
 
