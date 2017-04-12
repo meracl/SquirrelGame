@@ -7,6 +7,6 @@ public class GoodBeast extends Entity {
 
 	}
 
-	void updateEnergy(int delta) {
+	public void updateEnergy(int delta) {
 	}
 }
