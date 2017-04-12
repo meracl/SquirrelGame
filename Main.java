@@ -1,13 +1,11 @@
 public class Main {
+	public static EntitySet game = new EntitySet();
 
 	public static void main(String[] args) {
-		EntitySet.createEntitys();
+		game.createEntitys();
 		while (true) {
-			run();
+			game.run();
 		}
 	}
 
-	public static void run() {
-		EntitySet.runAll();
-	}
 }
