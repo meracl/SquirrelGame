@@ -10,37 +10,47 @@ abstract class Entity {
 		this.xy = xy;
 	}
 
-	int getId() {
+	public int getId() {
 		return id;
 	}
 
-	int getEnergy() {
+	public int getEnergy() {
 		return energy;
 	}
 
-	XY getXy() {
+	public XY getXy() {
 		return xy;
 	}
 
-	void updateEnergy(int delta) {
+	public void setXy(XY newxy) {
+		this.xy = newxy;
+	}
+
+	public void updateEnergy(int delta) {
 		energy = energy + delta;
 	}
 
-	void nextStep() {
-		move();
+	public void nextStep() {
+		XY newxy = XY.move(xy);
+		if (Main.game.possibleMoveNoSq(newxy, id)) {
+			xy = newxy;
+		}
 	}
 
 	public String toString() {
 		return this.getClass() + " mit ID: " + getId() + " Energy: " + getEnergy() + " Koordinaten " + xy;
 	}
-	public void move() {
-		int x=xy.x+randomVek();
-		int y=xy.y+randomVek();
-		this.xy=new XY(x,y);
+
+	public MinniSquirrel createMinni(int i) {
+		return null;
+
 	}
-	public static int randomVek(){
-		int i=(int) (Math.random()*3)-1;
-		return i;
+
+	public boolean equals(Entity entity) {
+		if (this.id == entity.getId()) {
+			return true;
+		}
+		return false;
 	}
 
 }
