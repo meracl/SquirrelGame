@@ -5,8 +5,4 @@ public class Squirrel extends Entity {
 		super(id, energy, xy);
 	}
 
-	void nextStep() {
-
-	}
-
 }
