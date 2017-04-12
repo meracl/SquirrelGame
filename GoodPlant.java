@@ -5,8 +5,9 @@ public class GoodPlant extends Entity {
 	public GoodPlant(int id, XY xy) {
 		super(id, ENERGY, xy);
 	}
-	public void nextStep(){
-		
+
+	public void nextStep() {
+
 	}
-	
+
 }
