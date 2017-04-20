@@ -32,7 +32,7 @@ abstract class Entity {
 
 	public void nextStep() {
 		XY newxy = XY.move(xy);
-		if (Main.game.possibleMoveNoSq(newxy, id)) {
+		if (Game.game.possibleMoveNoSq(newxy, id)) {
 			xy = newxy;
 		}
 	}

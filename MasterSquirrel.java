@@ -10,7 +10,7 @@ public class MasterSquirrel extends Squirrel {
 	}
 
 	public MinniSquirrel createMinni(int energy) {
-		int id = Main.game.getnextId();
+		int id = Game.game.getnextId();
 		this.updateEnergy(-energy);
 		return new MinniSquirrel(id, energy, getXy(), getId());
 	}

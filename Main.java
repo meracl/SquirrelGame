@@ -1,11 +1,9 @@
 public class Main {
-	public static EntitySet game = new EntitySet();
-
 	public static void main(String[] args) {
-		game.createEntitys();
-		while (true) {
-			game.run();
-		}
+		Board board=new Board();
+		State state=new State(board);
+		Game game =new Game(state);
+		game.run();
 	}
 
 }

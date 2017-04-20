@@ -30,16 +30,16 @@ public class EntitySet {
 		addEntity(new Wall(i++, new XY(2, 1)));
 		addEntity(new Wall(i++, new XY(1, 2)));
 		addEntity(new Wall(i++, new XY(2, 2)));
-		System.out.println(toString(entitySet));
+		System.out.println(entitySet.toString());
 
 		return entitySet;
 	}
 
 	public static void addEntity(Entity entity) {
 		int count = 0;
-		while (count <= Main.game.entitySet.length - 1) {
-			if (Main.game.entitySet[count] == null) {
-				Main.game.entitySet[count] = entity;
+		while (count <= Game.game.entitySet.length - 1) {
+			if (Game.game.entitySet[count] == null) {
+				Game.game.entitySet[count] = entity;
 				break;
 			}
 			count++;
@@ -51,7 +51,7 @@ public class EntitySet {
 		entitySet[j] = null;
 	}
 
-	public String toString(Entity[] entitySet) {
+	public String toString() {
 		String s = "";
 		for (int i = 0; i <= entitySet.length - 1; i++) {
 			if (entitySet[i] == null) {
@@ -73,7 +73,7 @@ public class EntitySet {
 				msloc = i;
 		}
 		entitySet[msloc].nextStep();
-		System.out.println(toString(entitySet));
+		System.out.println(entitySet.toString());
 	}
 
 	public boolean possibleMoveSq(XY xy, int id) {

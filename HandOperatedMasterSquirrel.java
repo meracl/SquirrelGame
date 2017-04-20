@@ -48,7 +48,7 @@ public class HandOperatedMasterSquirrel extends MasterSquirrel {
 			System.out.println("keine gueltige Richtung");
 		}
 		XY newxy = XY.addXy(getXy(), vector);
-		boolean move = Main.game.possibleMoveSq(newxy, getId());
+		boolean move = Game.game.possibleMoveSq(newxy, getId());
 		if (move) {
 			setXy(newxy);
 		}
