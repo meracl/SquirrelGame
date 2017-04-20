@@ -1,56 +1,50 @@
-
 abstract class Entity {
-	private int id;
-	private int energy;
-	private XY xy;
+    private int id;
+    private int energy;
+    private XY xy;
 
-	public Entity(int id, int energy, XY xy) {
-		this.id = id;
-		this.energy = energy;
-		this.xy = xy;
-	}
+    public Entity(int id, int energy, XY xy) {
+        this.id = id;
+        this.energy = energy;
+        this.xy = xy;
+    }
 
-	public int getId() {
-		return id;
-	}
+    int getId() {
+        return id;
+    }
 
-	public int getEnergy() {
-		return energy;
-	}
+    int getEnergy() {
+        return energy;
+    }
 
-	public XY getXy() {
-		return xy;
-	}
+    XY getXy() {
+        return xy;
+    }
+    void setXy(XY newxy) {
+        this.xy=newxy;
+    }
 
-	public void setXy(XY newxy) {
-		this.xy = newxy;
-	}
+    void updateEnergy(int delta) {
+        energy = energy + delta;
+    }
 
-	public void updateEnergy(int delta) {
-		energy = energy + delta;
-	}
+    void nextStep() {
+        move();
+        //EntitySet.collusion(id);
+    }
 
-	public void nextStep() {
-		XY newxy = XY.move(xy);
-		if (Game.game.possibleMoveNoSq(newxy, id)) {
-			xy = newxy;
-		}
-	}
+    public String toString() {
+        return this.getClass() + " mit ID: " + getId() + " Energy: " + getEnergy() + " Koordinaten " + xy;
+    }
 
-	public String toString() {
-		return this.getClass() + " mit ID: " + getId() + " Energy: " + getEnergy() + " Koordinaten " + xy;
-	}
+    public void move() {
+        int x = xy.x + randomVek();
+        int y = xy.y + randomVek();
+        this.xy = new XY(x, y);
+    }
 
-	public MinniSquirrel createMinni(int i) {
-		return null;
-
-	}
-
-	public boolean equals(Entity entity) {
-		if (this.id == entity.getId()) {
-			return true;
-		}
-		return false;
-	}
-
+    public static int randomVek() {
+        int i = (int) (Math.random() * 3) - 1;
+        return i;
+    }
 }

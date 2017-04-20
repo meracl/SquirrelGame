@@ -1,24 +1,10 @@
+public class MasterSquirrel extends Entity {
 
-public class MasterSquirrel extends Squirrel {
+    public MasterSquirrel(int id,XY xy) {
+        super(id, 1000, xy);
+    }
 
-	public MasterSquirrel(int id, XY xy) {
-		super(id, 1000, xy);
-	}
+    void nextStep() {
 
-	public void nextStep() {
-
-	}
-
-	public MinniSquirrel createMinni(int energy) {
-		int id = Game.game.getnextId();
-		this.updateEnergy(-energy);
-		return new MinniSquirrel(id, energy, getXy(), getId());
-	}
-
-	public boolean isOwnMinni(MinniSquirrel ms) {
-		if (ms.getPid() == this.getId()) {
-			return true;
-		} else
-			return false;
-	}
+    }
 }

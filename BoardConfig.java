@@ -1,5 +1,5 @@
 public class BoardConfig {
-    private XY size=new XY(3,3);
+    private XY size=new XY(15,15);
     private int wallCount=10;
     private int goodPlantCount=3;
     private int badPlantCount=3;
@@ -18,25 +18,25 @@ public class BoardConfig {
     public int getWallCount(){
         return wallCount;
     }
-    public void setgoodPlantCount(int i){
+    public void setGoodPlantCount(int i){
         goodPlantCount =i;
     }
-    public int getgoodPlantCount(){
+    public int getGoodPlantCount(){
         return goodPlantCount;
     }
-    public void setbadPlantCount(int i){
+    public void setBadPlantCount(int i){
         badPlantCount =i;
     }
-    public int getbadPlantCount(){
+    public int getBadPlantCount(){
         return badPlantCount;
     }
-    public void setgoodBeastCount(int i){
+    public void setGoodBeastCount(int i){
         goodBeastCount =i;
     }
-    public int getgoodBeastCount(){
+    public int getGoodBeastCount(){
         return goodBeastCount;
     }
-    public int setBadBeastCount(int i) {
+    public void setBadBeastCount(int i) {
         badBeastCount=i;
     }
     public int getBadBeastCount() {
