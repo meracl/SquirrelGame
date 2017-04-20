@@ -3,8 +3,8 @@ import java.util.Scanner;
 public class HandOperatedMasterSquirrel extends MasterSquirrel {
 	public static XY xy = new XY(0, 3);
 
-	public HandOperatedMasterSquirrel(int id) {
-		super(id, xy);
+	 HandOperatedMasterSquirrel(int id) {
+		super(id,xy);
 	}
 
 	public void nextStep() {
@@ -18,18 +18,18 @@ public class HandOperatedMasterSquirrel extends MasterSquirrel {
 			Scanner enScan = new Scanner(System.in);
 			int givenEnergy = Integer.parseInt(enScan.nextLine());
 			while (givenEnergy >= this.getEnergy() | givenEnergy < 100) {
-				System.out.println("Zahl nicht zulässig nochmal versuchen");
+				System.out.println("Zahl nicht zulÃ¤ssig nochmal versuchen");
 				Scanner enScan2 = new Scanner(System.in);
 				givenEnergy = Integer.parseInt(enScan2.nextLine());
 			}
 			EntitySet.addEntity(this.createMinni(givenEnergy));
 		} else {
-			System.out.println("keine gültige Eingabe");
+			System.out.println("keine gueltige Eingabe");
 		}
 
 	}
 
-	public void doMove(char dir) {
+	private void doMove(char dir) {
 		XY vector = new XY(0, 0);
 		switch (dir) {
 		case 'w':
@@ -45,7 +45,7 @@ public class HandOperatedMasterSquirrel extends MasterSquirrel {
 			vector = new XY(1, 0);
 			break;
 		default:
-			System.out.println("keine gültige Richtung");
+			System.out.println("keine gueltige Richtung");
 		}
 		XY newxy = XY.addXy(getXy(), vector);
 		boolean move = Main.game.possibleMoveSq(newxy, getId());
