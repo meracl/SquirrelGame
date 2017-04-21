@@ -1,5 +1,5 @@
 
-public class MinniSquirrel extends Squirrel {
+public class MinniSquirrel extends PlayerEntity {
 	private int parentId;
 
 	public MinniSquirrel(int id, int energy, XY xy, int pid) {
@@ -14,6 +14,10 @@ public class MinniSquirrel extends Squirrel {
 
 	public int getPid() {
 		return parentId;
+	}
+
+	public EntityType getEntityType(){
+		return EntityType.MinniSquirrel;
 	}
 
 }

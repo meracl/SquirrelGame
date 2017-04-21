@@ -54,6 +54,10 @@ public class HandOperatedMasterSquirrel extends MasterSquirrel {
             this.setXy(newxy);
         }*/
     }
+    public EntityType getEntityType(){
+        return EntityType.HandoperatedMasterSquirrel;
+    }
+
 }
 
 

@@ -3,7 +3,7 @@ abstract class Entity {
     private int energy;
     private XY xy;
 
-    public Entity(int id, int energy, XY xy) {
+    protected Entity(int id, int energy, XY xy) {
         this.id = id;
         this.energy = energy;
         this.xy = xy;
@@ -28,23 +28,21 @@ abstract class Entity {
         energy = energy + delta;
     }
 
-    void nextStep() {
-        move();
-        //EntitySet.collusion(id);
+    void nextStep(EntityContext context) {
+
     }
 
     public String toString() {
         return this.getClass() + " mit ID: " + getId() + " Energy: " + getEnergy() + " Koordinaten " + xy;
     }
 
-    public void move() {
-        int x = xy.x + randomVek();
-        int y = xy.y + randomVek();
-        this.xy = new XY(x, y);
-    }
+
 
     public static int randomVek() {
         int i = (int) (Math.random() * 3) - 1;
         return i;
+    }
+    public EntityType getEntityType(){
+        return EntityType.Entity;
     }
 }

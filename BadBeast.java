@@ -7,4 +7,7 @@ public class BadBeast extends Entity {
 
 	public void updateEnergy(int delta) {
 	}
+	public EntityType getEntityType(){
+		return EntityType.BadBeast;
+	}
 }

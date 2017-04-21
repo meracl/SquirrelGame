@@ -1,5 +1,7 @@
 public class BoardConfig {
-    private XY size=new XY(15,15);
+    int height=10;
+    int width=10;
+    private XY size=new XY(height,width);
     private int wallCount=10;
     private int goodPlantCount=3;
     private int badPlantCount=3;
@@ -9,8 +11,14 @@ public class BoardConfig {
     public void setSize(XY xy){
         size =xy;
     }
-    public XY getSize (){
+    public XY getSize(){
         return size;
+    }
+    public int getSizeX(){
+        return height;
+    }
+    public int getSizeY(){
+        return width;
     }
     public void setWallCount(int i){
         wallCount =i;

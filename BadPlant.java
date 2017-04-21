@@ -9,5 +9,8 @@ public class BadPlant extends Entity {
 	public void nextStep() {
 
 	}
+	public EntityType getEntityType(){
+		return EntityType.BadPlant;
+	}
 
 }

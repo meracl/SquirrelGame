@@ -9,4 +9,7 @@ public class GoodBeast extends Entity {
 
 	public void updateEnergy(int delta) {
 	}
+	public EntityType getEntityType(){
+		return EntityType.GoodBeast;
+	}
 }

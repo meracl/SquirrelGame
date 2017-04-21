@@ -9,5 +9,8 @@ public class Wall extends Entity {
 	public void nextStep() {
 
 	}
+	public EntityType getEntityType(){
+		return EntityType.Wall;
+	}
 
 }
