@@ -6,9 +6,6 @@ public class Wall extends Entity {
 		super(id, ENERGY, xy);
 	}
 
-	public void nextStep() {
-
-	}
 	public EntityType getEntityType(){
 		return EntityType.Wall;
 	}

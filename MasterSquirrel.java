@@ -4,8 +4,8 @@ public class MasterSquirrel extends PlayerEntity {
         super(id, 1000, xy);
     }
 
-    void nextStep() {
-
+    public void nextStep(EntityContext context){
+        context.tryMove(this,XY.randomVec());
     }
     public EntityType getEntityType(){
         return EntityType.MasterSquirrel;

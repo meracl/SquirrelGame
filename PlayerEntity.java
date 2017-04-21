@@ -1,5 +1,5 @@
 
-public class PlayerEntity extends Entity {
+public class PlayerEntity extends Character {
 
 	public PlayerEntity(int id, int energy, XY xy) {
 		super(id, energy, xy);

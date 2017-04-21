@@ -19,5 +19,9 @@ public class MinniSquirrel extends PlayerEntity {
 	public EntityType getEntityType(){
 		return EntityType.MinniSquirrel;
 	}
+	public void nextStep(EntityContext context){
+		context.tryMove(this,XY.randomVec());
+	}
+
 
 }

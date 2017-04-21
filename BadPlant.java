@@ -6,11 +6,11 @@ public class BadPlant extends Entity {
 		super(id, ENERGY, xy);
 	}
 
-	public void nextStep() {
 
-	}
 	public EntityType getEntityType(){
 		return EntityType.BadPlant;
+	}
+	public void nextStep(EntityContext context){
 	}
 
 }

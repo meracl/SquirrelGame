@@ -29,14 +29,11 @@ abstract class Entity {
     }
 
     void nextStep(EntityContext context) {
-
     }
 
     public String toString() {
         return this.getClass() + " mit ID: " + getId() + " Energy: " + getEnergy() + " Koordinaten " + xy;
     }
-
-
 
     public static int randomVek() {
         int i = (int) (Math.random() * 3) - 1;
@@ -45,4 +42,7 @@ abstract class Entity {
     public EntityType getEntityType(){
         return EntityType.Entity;
     }
+
+
+
 }

@@ -24,7 +24,7 @@ final public class XY {
         return new XY(newx, newy);
     }
 
-    public static XY move(XY xy) {
+    public static XY randomMove(XY xy) {
         XY vec = randomVec();
         return addXy(xy, vec);
     }

@@ -57,6 +57,9 @@ public class HandOperatedMasterSquirrel extends MasterSquirrel {
     public EntityType getEntityType(){
         return EntityType.HandoperatedMasterSquirrel;
     }
+    public void nextStep(EntityContext context){
+        context.tryMove(this,XY.randomVec());
+    }
 
 }
 

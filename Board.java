@@ -12,16 +12,16 @@ public class Board {
 
     private void addOtherEntitys() {
         for (int i = 1; i <= BC.getBadBeastCount(); i++) {
-            addEntity(new BadBeast(ID, randomPos()));
+            createBadBeast();
         }
         for (int i = 1; i <= BC.getGoodBeastCount(); i++) {
-            addEntity(new GoodBeast(ID, randomPos()));
+            createGoodBeast();
         }
         for (int i = 1; i <= BC.getBadPlantCount(); i++) {
-            addEntity(new BadPlant(ID, randomPos()));
+            createBadPlant();
         }
         for (int i = 1; i <= BC.getGoodPlantCount(); i++) {
-            addEntity(new GoodPlant(ID, randomPos()));
+            createGoodPlant();
         }
 
     }
@@ -36,6 +36,7 @@ public class Board {
         }
     }
 
+
     public void addEntity(Entity entity) {
         int count = 0;
         while (count <= board.length - 1) {
@@ -48,10 +49,19 @@ public class Board {
 
     }
 
+    public void deleteEntity(int id) {
+        for (int i = 0; i == board.length - 1; i++) {
+            if (board[i].getId() == id) {
+                board[i] = null;
+                return;
+            }
+        }
+    }
+
     public Entity[][] flatten() {
         Entity[][] flatBoard = new Entity[BC.getSize().x][BC.getSize().y];
-            for (int i = 0; i <= board.length - 1; i++) {
-                if(board[i]!=null){
+        for (int i = 0; i <= board.length - 1; i++) {
+            if (board[i] != null) {
                 int x = board[i].getXy().x;
                 int y = board[i].getXy().y;
                 flatBoard[x][y] = board[i];
@@ -75,9 +85,11 @@ public class Board {
     public XY getSize() {
         return BC.getSize();
     }
+
     public int getSizeX() {
         return BC.getSizeX();
     }
+
     public int getSizeY() {
         return BC.getSizeY();
     }
@@ -91,5 +103,79 @@ public class Board {
             }
         }
         return true;
+    }
+
+    public void doAllMoves(EntityContext context) {
+        for (int i = 0; i <= board.length - 1; i++) {
+            if (board[i] != null) {
+                board[i].nextStep(context);
+            }
+        }
+    }
+
+    public void createGoodBeast() {
+        addEntity(new GoodBeast(ID++, randomPos()));
+    }
+
+    public void createBadBeast() {
+        addEntity(new BadBeast(ID++, randomPos()));
+    }
+
+    public void createBadPlant() {
+        addEntity(new BadPlant(ID++, randomPos()));
+    }
+
+    public void createGoodPlant() {
+        addEntity(new GoodPlant(ID++, randomPos()));
+    }
+
+    public XY distanceGood(XY xy, XY vec) {
+        int distance = 7;
+        for (int i = 0; i <= board.length - 1; i++) {
+            if (board[i] != null) {
+                if (board[i].getEntityType() == EntityType.MasterSquirrel) {
+                    int disx = Math.abs(xy.x - board[i].getXy().x);
+                    int disy = Math.abs(xy.y - board[i].getXy().y);
+                    int dis = (disx + disy);
+                    if (dis < distance) {
+                        distance = dis;
+                        int newvex = vec(disx);
+                        int newvey = vec(disy);
+                        vec = new XY(newvex, newvey);
+                    }
+                }
+            }
+        }
+        return vec;
+    }
+    public XY distanceBad(XY xy, XY vec) {
+        int distance = 7;
+        for (int i = 0; i <= board.length - 1; i++) {
+            if (board[i] != null) {
+                if (board[i].getEntityType() == EntityType.MasterSquirrel) {
+                    int disx = Math.abs(xy.x - board[i].getXy().x);
+                    int disy = Math.abs(xy.y - board[i].getXy().y);
+                    int dis = (disx + disy);
+                    if (dis < distance) {
+                        distance = dis;
+                        int newvex = -vec(disx);
+                        int newvey = -vec(disy);
+                        vec = new XY(newvex, newvey);
+                    }
+                }
+            }
+        }
+        return vec;
+    }
+
+
+    public int vec(int i) {
+        if (i < 0)
+            return -1;
+        else if (i > 0)
+            return 1;
+        else
+            return 0;
+
     }
 }
