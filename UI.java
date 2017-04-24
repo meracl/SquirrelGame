@@ -1,5 +1,6 @@
 
 public interface UI {
-//    MoveCommand getCommand();
+    MoveCommand getCommand();
+
     void render(BoardView view);
 }

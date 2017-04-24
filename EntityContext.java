@@ -9,7 +9,7 @@ public interface EntityContext {
 
     void tryMove(MasterSquirrel mastersquirrel, XY moveDirection);
 
-    PlayerEntity nearestPlayerEntity();
+    PlayerEntity nearestPlayerEntity(XY xy);
 
 
     void kill(Entity entity);

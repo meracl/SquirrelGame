@@ -11,6 +11,7 @@ public class Board {
     }
 
     private void addOtherEntitys() {
+        createHandOperated();
         for (int i = 1; i <= BC.getBadBeastCount(); i++) {
             createBadBeast();
         }
@@ -106,12 +107,16 @@ public class Board {
     }
 
     public void doAllMoves(EntityContext context) {
+
         for (int i = 0; i <= board.length - 1; i++) {
-            if (board[i] != null) {
+            if (board[i] != null/* && board[i].getEntityType() != EntityType.MasterSquirrel*/) {
                 board[i].nextStep(context);
             }
         }
     }
+
+
+
 
     public void createGoodBeast() {
         addEntity(new GoodBeast(ID++, randomPos()));
@@ -129,53 +134,7 @@ public class Board {
         addEntity(new GoodPlant(ID++, randomPos()));
     }
 
-    public XY distanceGood(XY xy, XY vec) {
-        int distance = 7;
-        for (int i = 0; i <= board.length - 1; i++) {
-            if (board[i] != null) {
-                if (board[i].getEntityType() == EntityType.MasterSquirrel) {
-                    int disx = Math.abs(xy.x - board[i].getXy().x);
-                    int disy = Math.abs(xy.y - board[i].getXy().y);
-                    int dis = (disx + disy);
-                    if (dis < distance) {
-                        distance = dis;
-                        int newvex = vec(disx);
-                        int newvey = vec(disy);
-                        vec = new XY(newvex, newvey);
-                    }
-                }
-            }
-        }
-        return vec;
-    }
-    public XY distanceBad(XY xy, XY vec) {
-        int distance = 7;
-        for (int i = 0; i <= board.length - 1; i++) {
-            if (board[i] != null) {
-                if (board[i].getEntityType() == EntityType.MasterSquirrel) {
-                    int disx = Math.abs(xy.x - board[i].getXy().x);
-                    int disy = Math.abs(xy.y - board[i].getXy().y);
-                    int dis = (disx + disy);
-                    if (dis < distance) {
-                        distance = dis;
-                        int newvex = -vec(disx);
-                        int newvey = -vec(disy);
-                        vec = new XY(newvex, newvey);
-                    }
-                }
-            }
-        }
-        return vec;
-    }
-
-
-    public int vec(int i) {
-        if (i < 0)
-            return -1;
-        else if (i > 0)
-            return 1;
-        else
-            return 0;
-
+    public void createHandOperated() {
+        addEntity(new HandOperatedMasterSquirrel(ID++));
     }
 }
