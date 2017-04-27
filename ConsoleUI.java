@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
 public class ConsoleUI implements UI {
-
     public MoveCommand getCommand() {
         Scanner scanner = new Scanner(System.in);
         char c = scanner.nextLine().charAt(0);
@@ -24,6 +23,38 @@ public class ConsoleUI implements UI {
     }
 
     public void render(BoardView view) {
-        System.out.print(view.toString());
+        for (int i = 0; i <= view.getSize().y - 1; i++) {
+            for (int j = 0; j <= view.getSize().x - 1; j++) {
+                switch (view.getEntityType(i, j)) {
+                    case Wall:
+                        System.out.print("W ");
+                        break;
+                    case GoodBeast:
+                        System.out.print("G ");
+                        break;
+                    case BadBeast:
+                        System.out.print("B ");
+                        break;
+                    case GoodPlant:
+                        System.out.print("g ");
+                        break;
+                    case BadPlant:
+                        System.out.print("b ");
+                        break;
+                    case MasterSquirrel:
+                        System.out.print("M ");
+                        break;
+                    case MinniSquirrel:
+                        System.out.print("m ");
+                        break;
+                    case HandoperatedMasterSquirrel:
+                        System.out.print("H ");
+                        break;
+                    default:
+                        System.out.print("  ");
+                }
+            }
+            System.out.println();
+        }
     }
 }
