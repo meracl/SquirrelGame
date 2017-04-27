@@ -8,8 +8,11 @@ public class HandOperatedMasterSquirrel extends MasterSquirrel {
         super(id, xy);
     }
 
+    public void nextStep(EntityContext context,XY move) {
+        context.tryMove(this,move);
+    }
     public void nextStep(EntityContext context) {
-        context.tryMove(this,Game.squirrelMove);
+
     }
 
     public EntityType getEntityType(){

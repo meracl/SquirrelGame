@@ -8,12 +8,17 @@ public class State {
 
     public void update() {
         boardState.doAllMoves(flattenedBoard());
-
     }
 
 
     public FlattenedBoard flattenedBoard() {
-
         return new FlattenedBoard(boardState);
+    }
+    Board getBoard(){
+        return boardState;
+    }
+
+    EntityContext getContext(){
+        return flattenedBoard();
     }
 }

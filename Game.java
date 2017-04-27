@@ -1,8 +1,7 @@
 
-public class Game {
+abstract public class Game {
     private State gameState;
     private BoardView view;
-    public static XY squirrelMove;
     private FlattenedBoard flattenedBoard;
 
     UI ui = new ConsoleUI();
@@ -23,23 +22,6 @@ public class Game {
         ui.render(view);
     }
     protected void processInput(){
-        MoveCommand mc=ui.getCommand();
-        switch (mc){
-            case up:
-                this.squirrelMove=new XY(-1,0);
-                break;
-            case right:
-                this.squirrelMove=new XY(0,1);
-                break;
-            case down:
-                this.squirrelMove=new XY (1,0);
-                break;
-            case left:
-                this.squirrelMove=new XY(0,-1);
-                break;
-            case none:
-                this.squirrelMove=new XY(0,0);
-        }
 
     }
     protected void update(){
@@ -48,6 +30,10 @@ public class Game {
         view=flattenedBoard;
 
     }
+    State getState(){
+        return gameState;
+    }
+
 
 
 }

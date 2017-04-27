@@ -1,17 +1,17 @@
 public class Board {
     public static BoardConfig BC = new BoardConfig();
     public Entity[] board;
-    private int ID = 1;
+    private int ID = 2;
 
 
     public Board() {
         this.board = new Entity[BC.getSize().x * BC.getSize().y];
         addSurrounding();
-        addOtherEntitys();
+
     }
 
-    private void addOtherEntitys() {
-        createHandOperated();
+    public void addOtherEntitys() {
+
         for (int i = 1; i <= BC.getBadBeastCount(); i++) {
             createBadBeast();
         }
@@ -109,7 +109,7 @@ public class Board {
     public void doAllMoves(EntityContext context) {
 
         for (int i = 0; i <= board.length - 1; i++) {
-            if (board[i] != null/* && board[i].getEntityType() != EntityType.MasterSquirrel*/) {
+            if (board[i] != null) {
                 board[i].nextStep(context);
             }
         }
@@ -134,7 +134,10 @@ public class Board {
         addEntity(new GoodPlant(ID++, randomPos()));
     }
 
-    public void createHandOperated() {
-        addEntity(new HandOperatedMasterSquirrel(ID++));
+    public void createHandOperated(HandOperatedMasterSquirrel player) {
+        addEntity(player);
     }
+
+
+
 }
