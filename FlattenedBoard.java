@@ -3,9 +3,9 @@ public class FlattenedBoard implements EntityContext, BoardView {
     private Board board;
     private Entity[][] flatBoard;
 
-    public FlattenedBoard(Board board) {
-        this.board = new Board();
-        this.flatBoard = board.flatten();
+    public FlattenedBoard(Board board1) {
+        this.board = board1;
+        this.flatBoard = board1.flatten();
 
     }
 
@@ -102,22 +102,19 @@ public class FlattenedBoard implements EntityContext, BoardView {
             EntityType type = getEntityType(newPos);
             switch (type) {
                 case GoodBeast:
-                    break;
                 case BadBeast:
-                    break;
                 case BadPlant:
-                    break;
                 case GoodPlant:
                     break;
                 case Wall:
                     return;
                 case MinniSquirrel:
                     newPosEnt.updateEnergy(goodBeast.getEnergy());
-                    kill(goodBeast);
+                    killAndReplace(goodBeast);
                     break;
                 case MasterSquirrel:
                     newPosEnt.updateEnergy(goodBeast.getEnergy());
-                    kill(goodBeast);
+                    killAndReplace(goodBeast);
 
             }
             goodBeast.setXy(newPos);
@@ -125,6 +122,7 @@ public class FlattenedBoard implements EntityContext, BoardView {
     }
 
     public void tryMove(BadBeast badBeast, XY moveDirection) {
+        badBeast.addMove(1);
         if (badBeast.getMove() % 4 == 0) {
             PlayerEntity nearestSquirrel = nearestPlayerEntity(badBeast.getXy());
             if (nearestSquirrel != null) {
@@ -167,12 +165,13 @@ public class FlattenedBoard implements EntityContext, BoardView {
     }
 
     public void tryMove(MasterSquirrel masterSquirrel, XY moveDirection) {
+
         if (masterSquirrel.getMove() <= 0) {
             XY newPos = new XY(XY.addXy(masterSquirrel.getXy(), moveDirection));
-            masterSquirrel.updateEnergy(-1);
             Entity newPosEnt = flatBoard[newPos.x][newPos.y];
             if (newPosEnt == null) {
                 masterSquirrel.setXy(newPos);
+                System.out.println(masterSquirrel.toString());
                 return;
             }
             EntityType type = getEntityType(newPos);
@@ -215,6 +214,7 @@ public class FlattenedBoard implements EntityContext, BoardView {
                     return;
 
             }
+            System.out.println(masterSquirrel.toString());
             masterSquirrel.setXy(newPos);
         } else {
             masterSquirrel.addMove(-1);
@@ -265,6 +265,7 @@ public class FlattenedBoard implements EntityContext, BoardView {
                 break;
         }
 
+
     }
 
     public EntityType getEntityType(XY xy) {
@@ -309,7 +310,7 @@ public class FlattenedBoard implements EntityContext, BoardView {
             case MinniSquirrel:
                 return "m ";
             case HandoperatedMasterSquirrel:
-                return "H";
+                return "H ";
             default:
                 return "O ";
         }

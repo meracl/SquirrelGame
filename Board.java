@@ -51,8 +51,8 @@ public class Board {
     }
 
     public void deleteEntity(int id) {
-        for (int i = 0; i == board.length - 1; i++) {
-            if (board[i].getId() == id) {
+        for (int i = 0; i <= board.length - 1; i++) {
+            if ((board[i] != null) && (board[i].getId() == id)) {
                 board[i] = null;
                 return;
             }

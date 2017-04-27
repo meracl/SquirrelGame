@@ -1,22 +1,19 @@
 public class State {
-    Board boardState;
-    FlattenedBoard flattenedBoard;
-    private EntityContext context;
+    private Board boardState;
 
 
     public State(Board board) {
         this.boardState = board;
-        this.flattenedBoard=new FlattenedBoard(boardState);
-        this.context=new FlattenedBoard(boardState);
     }
 
-    public void update(XY squirrelMove) {
-        boardState.doAllMoves(context);
-        this.flattenedBoard=new FlattenedBoard(boardState);
+    public void update() {
+        boardState.doAllMoves(flattenedBoard());
+
     }
 
 
     public FlattenedBoard flattenedBoard() {
-        return flattenedBoard;
+
+        return new FlattenedBoard(boardState);
     }
 }

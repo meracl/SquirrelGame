@@ -1,12 +1,12 @@
 public class BoardConfig {
-    int height=30;
-    int width=30;
+    int height=10;
+    int width=10;
     private XY size=new XY(height,width);
     private int wallCount=10;
-    private int goodPlantCount=5;
-    private int badPlantCount=5;
-    private int goodBeastCount=5;
-    private int badBeastCount=5;
+    private int goodPlantCount=3;
+    private int badPlantCount=3;
+    private int goodBeastCount=3;
+    private int badBeastCount=3;
 
     public void setSize(XY xy){
         size =xy;

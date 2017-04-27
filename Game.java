@@ -3,12 +3,14 @@ public class Game {
     private State gameState;
     private BoardView view;
     public static XY squirrelMove;
+    private FlattenedBoard flattenedBoard;
 
     UI ui = new ConsoleUI();
 
     public Game(State state){
     this.gameState=state;
-    this.view=gameState.flattenedBoard();
+    this.flattenedBoard=gameState.flattenedBoard();
+    this.view=flattenedBoard;
     }
     public void run(){
         while (true){
@@ -41,8 +43,9 @@ public class Game {
 
     }
     protected void update(){
-        gameState.update(squirrelMove);
-      this.view=gameState.flattenedBoard();
+        gameState.update();
+        flattenedBoard=gameState.flattenedBoard();
+        view=flattenedBoard;
 
     }
 
