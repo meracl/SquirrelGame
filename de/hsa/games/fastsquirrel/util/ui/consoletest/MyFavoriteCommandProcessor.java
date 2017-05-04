@@ -14,9 +14,7 @@ public class MyFavoriteCommandProcessor {
 
         while (true) { // the loop over all commands with one input line for every command
             Command command = commandScanner.next();
-
             Object[] params = command.getParams();
-
             MyFavoriteCommandType commandType = (MyFavoriteCommandType) command.getCommandType();
 
             switch (commandType) {
@@ -26,13 +24,47 @@ public class MyFavoriteCommandProcessor {
                     help();
                     break;
                 case ADDI:
+                    addi(params);
+                    break;
+                case ADDF:
+                    addf(params);
+                    break;
+                case ECHO:
+                    echo(params);
+                    break;
+
             }
 
         }
     }
 
+    private void echo(Object[] params) {
+        String toEcho = (String)params[0];
+        int times = (int)params[1];
+        for (int i = 1; i <= times; i++) {
+            System.out.print(toEcho+" ");
+        }
+        System.out.println();
+    }
+
+    private void addf(Object[] params) {
+        float one=(float)params[0];
+        float two=(float)params[1];
+System.out.println(one+" + "+two+" = "+(one+two));
+    }
+
+    private void addi(Object[] params) {
+        int one=(int)params[0];
+        int two=(int)params[1];
+        System.out.println(one+" + "+two+" = "+(one+two));
+    }
+
     private static void help() {
-        System.out.println("Du willst Hilfe");
+        CommandTypeInfo[] commandTypeInfos = MyFavoriteCommandType.values();
+        System.out.println("These are the usable commands:");
+        for (int i=0;i<=commandTypeInfos.length-1;i++){
+            System.out.println(commandTypeInfos[i].getName()+" "+commandTypeInfos[i].getHelpText());
+        }
     }
 
     public static void main(String[] args) {

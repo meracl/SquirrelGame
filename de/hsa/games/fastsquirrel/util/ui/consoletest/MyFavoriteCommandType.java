@@ -55,12 +55,12 @@ public enum MyFavoriteCommandType implements CommandTypeInfo {
     ADDF("addf", "<param1>  <param2>   * simple float add ", float.class, float.class) {
         @Override
         public String getName() {
-            return null;
+            return "addf";
         }
 
         @Override
         public String getHelpText() {
-            return null;
+            return "<param1>  <param2>   * simple float add ";
         }
 
         @Override
@@ -74,12 +74,12 @@ public enum MyFavoriteCommandType implements CommandTypeInfo {
     ECHO("echo", "<param1>  <param2>   * echos param1 string param2 times ", String.class, int.class) {
         @Override
         public String getName() {
-            return null;
+            return "echo";
         }
 
         @Override
         public String getHelpText() {
-            return null;
+            return "<param1>  <param2>   * echos param1 string param2 times ";
         }
 
         @Override
@@ -97,7 +97,7 @@ public enum MyFavoriteCommandType implements CommandTypeInfo {
     private final Class inputType1;
     private final Class inputType2;
 
-    MyFavoriteCommandType(String command, String explanation) {
+   MyFavoriteCommandType(String command, String explanation) {
         this.commandType = command;
         this.commandExplanation = explanation;
         inputType1 = null;
@@ -110,6 +110,9 @@ public enum MyFavoriteCommandType implements CommandTypeInfo {
         this.inputType1 = type1;
         this.inputType2 = type2;
     }
+
+
+
 
 
     public String getCommandType() {
@@ -128,4 +131,8 @@ public enum MyFavoriteCommandType implements CommandTypeInfo {
         return inputType2;
     }
 
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }
