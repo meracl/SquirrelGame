@@ -120,8 +120,6 @@ public class Board {
     }
 
 
-
-
     public void createGoodBeast() {
         addEntity(new GoodBeast(ID++, randomPos()));
     }
@@ -141,7 +139,18 @@ public class Board {
     public void createHandOperated(HandOperatedMasterSquirrel player) {
         addEntity(player);
     }
+    public void createMinni(int pid,int energy,XY xy){
+        addEntity(new MinniSquirrel(ID++,energy,xy,pid));
+    }
 
-
+    public String toString() {
+        String s = "";
+        for (int i = 0; i <= board.length - 1; i++) {
+            if ((board[i] != null) && (board[i].getEntityType() != EntityType.Wall)) {
+                s = s + board[i].toString() + "\r\n";
+            }
+        }
+        return s;
+    }
 
 }

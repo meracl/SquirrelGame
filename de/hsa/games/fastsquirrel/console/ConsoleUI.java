@@ -1,31 +1,19 @@
 package de.hsa.games.fastsquirrel.console;
 
-import de.hsa.games.fastsquirrel.MoveCommand;
 import de.hsa.games.fastsquirrel.UI;
 import de.hsa.games.fastsquirrel.core.BoardView;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.PrintStream;
 
 public class ConsoleUI implements UI {
-    public MoveCommand getCommand() {
-        Scanner scanner = new Scanner(System.in);
-        char c = scanner.nextLine().charAt(0);
-        switch (c) {
-            case 'w':
-            case 'W':
-                return MoveCommand.up;
-            case 'a':
-            case 'A':
-                return MoveCommand.left;
-            case 's':
-            case 'S':
-                return MoveCommand.down;
-            case 'd':
-            case 'D':
-                return MoveCommand.right;
-            default:
-                return MoveCommand.none;
-        }
+    public Command getCommand() {
+        PrintStream outputStream = System.out;
+        BufferedReader inputReader = new BufferedReader(new InputStreamReader(System.in));
+        CommandScanner commandScanner = new CommandScanner(GameCommandType.values(), inputReader);
+        Command command = commandScanner.next();
+        return command;
     }
 
     public void render(BoardView view) {
@@ -64,4 +52,5 @@ public class ConsoleUI implements UI {
             System.out.println();
         }
     }
+
 }

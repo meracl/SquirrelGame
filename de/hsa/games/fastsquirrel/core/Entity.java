@@ -14,22 +14,22 @@ abstract class Entity {
         this.xy = xy;
     }
 
-    int getId() {
+    public int getId() {
         return id;
     }
 
-    int getEnergy() {
+    public int getEnergy() {
         return energy;
     }
 
-    XY getXy() {
+    public XY getXy() {
         return xy;
     }
     void setXy(XY newxy) {
         this.xy=newxy;
     }
 
-    void updateEnergy(int delta) {
+    public void updateEnergy(int delta) {
         energy = energy + delta;
     }
 
@@ -37,7 +37,7 @@ abstract class Entity {
     }
 
     public String toString() {
-        return this.getClass() + " mit ID: " + getId() + " Energy: " + getEnergy() + " Koordinaten " + xy;
+        return this.getEntityType() + " mit ID: " + getId() + " Energy: " + getEnergy() + " Koordinaten " + xy;
     }
 
     public static int randomVek() {

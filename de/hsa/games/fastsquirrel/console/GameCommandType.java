@@ -1,30 +1,33 @@
-package de.hsa.games.fastsquirrel.util.ui.consoletest;
+package de.hsa.games.fastsquirrel.console;
 
-public enum MyFavoriteCommandType implements CommandTypeInfo {
+public enum GameCommandType implements CommandTypeInfo {
     HELP("help", "  * list all commands"),
     EXIT("exit", "  * exit program"),
-    ADDI("addi", "<param1>  <param2>   * simple integer add ", int.class, int.class),
-    ADDF("addf", "<param1>  <param2>   * simple float add ", float.class, float.class),
-    ECHO("echo", "<param1>  <param2>   * echos param1 string param2 times ", String.class, int.class);
+    ALL("all", " * list all entities"),
+    LEFT("a", " * go left") ,
+    UP("w", " * go up"),
+    DOWN("s", " * go down"),
+    RIGHT("d", " * do right"),
+    MASTER_ENERGY("m", " * display masters energy"),
+    SPAWN_MINI("n" ,"<param> * spawn new minnisquirrel with given energy >100",int.class);
+
+
 
 
     private final String commandType;
     private final String commandExplanation;
     private final Class inputType1;
-    private final Class inputType2;
 
-   MyFavoriteCommandType(String command, String explanation) {
+    GameCommandType(String command, String explanation) {
         this.commandType = command;
         this.commandExplanation = explanation;
         inputType1 = null;
-        inputType2 = null;
     }
 
-    MyFavoriteCommandType(String command, String s, Class type1, Class type2) {
+    GameCommandType(String command, String s, Class type1) {
         this.commandType = command;
         this.commandExplanation = s;
         this.inputType1 = type1;
-        this.inputType2 = type2;
     }
 
 
@@ -43,9 +46,7 @@ public enum MyFavoriteCommandType implements CommandTypeInfo {
         return inputType1;
     }
 
-    public Class getInputType2() {
-        return inputType2;
-    }
+
 
     @Override
     public String getName() {
@@ -59,9 +60,8 @@ public enum MyFavoriteCommandType implements CommandTypeInfo {
 
     @Override
     public Class<?>[] getParamTypes() {
-        Class<?>[] type = new Class<?>[2];
+        Class<?>[] type = new Class<?>[1];
         type[0] = getInputType1();
-        type[1] = getInputType2();
         return type;
     }
 }

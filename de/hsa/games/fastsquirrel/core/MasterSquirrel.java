@@ -15,4 +15,5 @@ public class MasterSquirrel extends PlayerEntity {
     public EntityType getEntityType(){
         return EntityType.MasterSquirrel;
     }
+
 }

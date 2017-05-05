@@ -134,7 +134,6 @@ public class FlattenedBoard implements EntityContext, BoardView {
             Entity newPosEnt = flatBoard[newPos.x][newPos.y];
             if (newPosEnt == null) {
                 masterSquirrel.setXy(newPos);
-                System.out.println(masterSquirrel.toString());
                 return;
             }
             EntityType type = getEntityType(newPos);
@@ -161,7 +160,6 @@ public class FlattenedBoard implements EntityContext, BoardView {
                     killAndReplace(newPosEnt);
 
             }
-            System.out.println(masterSquirrel.toString());
             masterSquirrel.setXy(newPos);
         } else {
             masterSquirrel.addMove(-1);
