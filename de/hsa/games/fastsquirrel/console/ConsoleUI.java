@@ -17,8 +17,8 @@ public class ConsoleUI implements UI {
     }
 
     public void render(BoardView view) {
-        for (int i = 0; i <= view.getSize().y - 1; i++) {
-        for (int j = 0; j <= view.getSize().x - 1; j++) {
+        for (int i = 0; i <= view.getSize().x - 1; i++) {
+        for (int j = 0; j <= view.getSize().y - 1; j++) {
                 switch (view.getEntityType(i, j)) {
                     case Wall:
                         System.out.print("W ");

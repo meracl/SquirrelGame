@@ -18,8 +18,16 @@ public class BadBeast extends Character {
 		return EntityType.BadBeast;
 	}
 	public void nextStep(EntityContext context){
-		context.tryMove(this, XY.randomVec());
+		Entity near=context.nearestPlayerEntity(this.getXy());
+		XY moveDirection;
+		if (near !=null) {
+			moveDirection = new XY(newDirectionTowards(this.getXy(),near.getXy()));
+		}else moveDirection=XY.randomVec();
+		context.tryMove(this, moveDirection);
 	}
+
+
+
 	public int getBites(){
 	    return bites;
     }

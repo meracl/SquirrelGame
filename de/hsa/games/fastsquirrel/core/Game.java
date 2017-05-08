@@ -35,6 +35,12 @@ abstract public class Game {
         view=flattenedBoard;
 
     }
+
+    protected void updateAfterMaster(){
+        flattenedBoard=gameState.flattenedBoard();
+        view=flattenedBoard;
+
+    }
     public State getState(){
         return gameState;
     }

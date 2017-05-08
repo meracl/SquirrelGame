@@ -49,5 +49,20 @@ abstract class Entity {
     }
 
 
+    public XY newDirectionTowards(XY xy1,XY xy2) {
+        int dirx = -getVektor(xy1.x - xy2.x);
+        int diry = -getVektor(xy1.y - xy2.y);
+        return new XY(dirx, diry);
+    }
+    public XY newDirectionAway(XY xy1,XY xy2) {
+        int dirx = getVektor(xy1.x - xy2.x);
+        int diry = getVektor(xy1.y - xy2.y);
+        return new XY(dirx, diry);
+    }
 
+    public int getVektor(int num){
+        if(num<0) return -1;
+        if (num>0)return 1;
+        else return 0;
+    }
 }

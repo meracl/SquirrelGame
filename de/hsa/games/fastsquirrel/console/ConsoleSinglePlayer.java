@@ -26,22 +26,22 @@ public class ConsoleSinglePlayer extends Game {
             case UP:
                 this.squirrelMove = new XY(-1, 0);
                 player.nextStep(getState().getContext(), squirrelMove);
-                update();
+                updateAfterMaster();
                 break;
             case RIGHT:
                 this.squirrelMove = new XY(0, 1);
                 player.nextStep(getState().getContext(), squirrelMove);
-                update();
+                updateAfterMaster();
                 break;
             case DOWN:
                 this.squirrelMove = new XY(1, 0);
                 player.nextStep(getState().getContext(), squirrelMove);
-                update();
+                updateAfterMaster();
                 break;
             case LEFT:
                 this.squirrelMove = new XY(0, -1);
                 player.nextStep(getState().getContext(), squirrelMove);
-                update();
+                updateAfterMaster();
                 break;
             case HELP:
                 help();
