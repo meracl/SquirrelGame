@@ -24,22 +24,11 @@ final public class XY {
         return new XY(newx, newy);
     }
 
-    public static XY randomMove(XY xy) {
-        XY vec = randomVec();
-        return addXy(xy, vec);
-    }
 
     public static XY randomVec() {
         int i = (int) (Math.random() * 3) - 1;
         int j = (int) (Math.random() * 3) - 1;
         return new XY(i, j);
-    }
-
-    public boolean equals(XY xy) {
-        if (this.x == xy.x && this.y == xy.y) {
-            return true;
-        }
-        return false;
     }
 
 }

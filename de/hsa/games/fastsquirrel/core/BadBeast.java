@@ -7,7 +7,7 @@ public class BadBeast extends Character {
 	final static int ENERGY = -150;
 	private int bites=0;
 
-	public BadBeast(int id, XY xy) {
+	BadBeast(int id, XY xy) {
 		super(id, ENERGY, xy);
 
 	}
@@ -28,10 +28,10 @@ public class BadBeast extends Character {
 
 
 
-	public int getBites(){
+	int getBites(){
 	    return bites;
     }
-    public void addABite(){
+    void addABite(){
 	    bites++;
     }
 

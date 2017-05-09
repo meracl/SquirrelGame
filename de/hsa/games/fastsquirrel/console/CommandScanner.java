@@ -4,20 +4,23 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintStream;
 
-public class CommandScanner {
+class CommandScanner {
 
-    CommandTypeInfo[] commandTypeInfos = GameCommandType.values();
-    BufferedReader inputStream;
+    private CommandTypeInfo[] commandTypeInfos;
+    private BufferedReader inputStream;
     PrintStream outputStream;
 
-    public Command next() {
+    Command next() {
         String input = null;
         try {
             input = inputStream.readLine();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        String[] splitedInput = input.split(" ");
+        String[] splitedInput = new String[0];
+        if (input != null) {
+            splitedInput = input.split(" ");
+        }
         for (int i = 0; i <= commandTypeInfos.length - 1; i++) {
             if (commandTypeInfos[i].getName().equals(splitedInput[0])) {
                 Class<?>[] param = commandTypeInfos[i].getParamTypes();
@@ -45,7 +48,7 @@ public class CommandScanner {
         return null;
     }
 
-    public CommandScanner(CommandTypeInfo[] commandTypeInfo, BufferedReader inputStream) {
+    CommandScanner(CommandTypeInfo[] commandTypeInfo, BufferedReader inputStream) {
         this.commandTypeInfos = commandTypeInfo;
         this.inputStream = inputStream;
     }

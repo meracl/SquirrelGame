@@ -7,13 +7,19 @@ import de.hsa.games.fastsquirrel.core.Game;
 import de.hsa.games.fastsquirrel.core.HandOperatedMasterSquirrel;
 
 public class ConsoleSinglePlayer extends Game {
-    public HandOperatedMasterSquirrel player = new HandOperatedMasterSquirrel(1);
-    public XY squirrelMove = new XY(0, 0);
+    private HandOperatedMasterSquirrel player = new HandOperatedMasterSquirrel(1);
+    private XY squirrelMove = new XY(0, 0);
+
+    State state;
+    Board board;
+
 
     public ConsoleSinglePlayer() {
         super(new State(new Board()));
-        getState().getBoard().createHandOperated(player);
-        getState().getBoard().addOtherEntitys();
+        this.state=getState();
+        this.board=state.getBoard();
+        board.createHandOperated(player);
+        board.addOtherEntitys();
         update();
 
     }
@@ -64,8 +70,12 @@ public class ConsoleSinglePlayer extends Game {
     private void spawnMini(Object[] params) {
         int energy=(int)params[0];
         player.updateEnergy(energy);
-        XY xy = new XY(XY.addXy(player.getXy(),new XY(0,1)));
-        getState().getBoard().createMinni(player.getId(),energy,xy);
+        XY xy;
+
+        do {
+            xy = new XY(XY.addXy(player.getXy(), XY.randomVec()));
+        }while(!board.possibleSet(xy.x,xy.y));
+        board.createMinni(player.getId(),energy,xy);
     }
 
     private void masterEnergy() {

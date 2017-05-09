@@ -12,8 +12,7 @@ public class ConsoleUI implements UI {
         PrintStream outputStream = System.out;
         BufferedReader inputReader = new BufferedReader(new InputStreamReader(System.in));
         CommandScanner commandScanner = new CommandScanner(GameCommandType.values(), inputReader);
-        Command command = commandScanner.next();
-        return command;
+        return commandScanner.next();
     }
 
     public void render(BoardView view) {

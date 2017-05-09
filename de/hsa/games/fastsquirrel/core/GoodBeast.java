@@ -6,7 +6,7 @@ import de.hsa.games.fastsquirrel.XY;
 public class GoodBeast extends Character {
     final static int ENERGY = 200;
 
-    public GoodBeast(int id, XY xy) {
+    GoodBeast(int id, XY xy) {
         super(id, ENERGY, xy);
     }
 

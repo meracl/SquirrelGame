@@ -40,27 +40,23 @@ abstract class Entity {
         return this.getEntityType() + " mit ID: " + getId() + " Energy: " + getEnergy() + " Koordinaten " + xy;
     }
 
-    public static int randomVek() {
-        int i = (int) (Math.random() * 3) - 1;
-        return i;
-    }
     public EntityType getEntityType(){
         return EntityType.Entity;
     }
 
 
-    public XY newDirectionTowards(XY xy1,XY xy2) {
+    XY newDirectionTowards(XY xy1, XY xy2) {
         int dirx = -getVektor(xy1.x - xy2.x);
         int diry = -getVektor(xy1.y - xy2.y);
         return new XY(dirx, diry);
     }
-    public XY newDirectionAway(XY xy1,XY xy2) {
+    XY newDirectionAway(XY xy1, XY xy2) {
         int dirx = getVektor(xy1.x - xy2.x);
         int diry = getVektor(xy1.y - xy2.y);
         return new XY(dirx, diry);
     }
 
-    public int getVektor(int num){
+    private int getVektor(int num){
         if(num<0) return -1;
         if (num>0)return 1;
         else return 0;

@@ -6,9 +6,10 @@ import de.hsa.games.fastsquirrel.XY;
 public class MinniSquirrel extends PlayerEntity {
 	private int parentId;
 
-	public MinniSquirrel(int id, int energy, XY xy, int pid) {
+	MinniSquirrel(int id, int energy, XY xy, int pid) {
 		super(id, energy, xy);
 		parentId = pid;
+		addMove(1);
 	}
 
 	public String toString() {
@@ -16,7 +17,7 @@ public class MinniSquirrel extends PlayerEntity {
 				+ " ParentID: " + parentId;
 	}
 
-	public int getPid() {
+	int getPid() {
 		return parentId;
 	}
 

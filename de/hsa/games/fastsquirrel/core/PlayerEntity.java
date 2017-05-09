@@ -5,7 +5,7 @@ import de.hsa.games.fastsquirrel.XY;
 
 public class PlayerEntity extends Character {
 
-	public PlayerEntity(int id, int energy, XY xy) {
+	PlayerEntity(int id, int energy, XY xy) {
 		super(id, energy, xy);
 	}
 

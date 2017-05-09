@@ -9,7 +9,7 @@ abstract public class Game {
     private BoardView view;
     private FlattenedBoard flattenedBoard;
 
-    public UI ui = new ConsoleUI();
+    protected UI ui = new ConsoleUI();
 
     public Game(State state){
     this.gameState=state;
@@ -23,7 +23,7 @@ abstract public class Game {
             update();
         }
     }
-    protected void render(){
+    private void render(){
         ui.render(view);
     }
     protected void processInput(){
@@ -41,7 +41,7 @@ abstract public class Game {
         view=flattenedBoard;
 
     }
-    public State getState(){
+    protected State getState(){
         return gameState;
     }
 

@@ -3,55 +3,47 @@ package de.hsa.games.fastsquirrel.core;
 import de.hsa.games.fastsquirrel.XY;
 
 public class BoardConfig {
-    int height=15;
-    int width=15;
+    private int height=5;
+    private int width=5;
     private XY size=new XY(height,width);
     private int wallCount=0;
-    private int goodPlantCount=3;
-    private int badPlantCount=3;
-    private int goodBeastCount=3;
-    private int badBeastCount=3;
+    private int goodPlantCount=0;
+    private int badPlantCount=0;
+    private int goodBeastCount=0;
+    private int badBeastCount=0;
 
     public void setSize(XY xy){
         size =xy;
     }
-    public XY getSize(){
+    XY getSize(){
         return size;
     }
-    public int getSizeX(){
+    int getSizeX(){
         return height;
     }
-    public int getSizeY(){
+    int getSizeY(){
         return width;
     }
-    public void setWallCount(int i){
+    void setWallCount(int i){
         wallCount =i;
     }
-    public int getWallCount(){
+    int getWallCount(){
         return wallCount;
     }
-    public void setGoodPlantCount(int i){
-        goodPlantCount =i;
-    }
-    public int getGoodPlantCount(){
+
+    int getGoodPlantCount(){
         return goodPlantCount;
     }
-    public void setBadPlantCount(int i){
-        badPlantCount =i;
-    }
-    public int getBadPlantCount(){
+
+    int getBadPlantCount(){
         return badPlantCount;
     }
-    public void setGoodBeastCount(int i){
-        goodBeastCount =i;
-    }
-    public int getGoodBeastCount(){
+
+    int getGoodBeastCount(){
         return goodBeastCount;
     }
-    public void setBadBeastCount(int i) {
-        badBeastCount=i;
-    }
-    public int getBadBeastCount() {
+
+    int getBadBeastCount() {
         return badBeastCount;
     }
 

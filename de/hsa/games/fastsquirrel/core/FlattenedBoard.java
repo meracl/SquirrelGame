@@ -81,7 +81,6 @@ public class FlattenedBoard implements EntityContext, BoardView {
                     killAndReplace(goodBeast);
                     return;
                 default:
-                    return;
 
             }
         }
@@ -113,7 +112,6 @@ public class FlattenedBoard implements EntityContext, BoardView {
                     }
                     return;
                 default:
-                    return;
 
             }
         }
@@ -206,16 +204,14 @@ public class FlattenedBoard implements EntityContext, BoardView {
     }
 
     public EntityType getEntityType(XY xy) {
-        EntityType type = getEntityType(xy.x, xy.y);
-        return type;
+        return getEntityType(xy.x, xy.y);
     }
 
     public EntityType getEntityType(int x, int y) {
         if (flatBoard[x][y]==null){
             return EntityType.None;
         }
-        EntityType type = flatBoard[x][y].getEntityType();
-        return type;
+        return flatBoard[x][y].getEntityType();
     }
 
     public String toString() {
@@ -233,7 +229,7 @@ public class FlattenedBoard implements EntityContext, BoardView {
         return s;
     }
 
-    public String resolveMarkers(Entity entity) {
+    private String resolveMarkers(Entity entity) {
         switch (entity.getEntityType()) {
             case Wall:
                 return "W ";
@@ -255,6 +251,9 @@ public class FlattenedBoard implements EntityContext, BoardView {
                 return "O ";
         }
 
+    }
+    public boolean isEmptyField(XY xy){
+        return flatBoard[xy.x][xy.y] == null;
     }
 
 }

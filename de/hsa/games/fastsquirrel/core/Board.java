@@ -3,8 +3,8 @@ package de.hsa.games.fastsquirrel.core;
 import de.hsa.games.fastsquirrel.*;
 
 public class Board {
-    public static BoardConfig BC = new BoardConfig();
-    public Entity[] board;
+    private static BoardConfig BC = new BoardConfig();
+    Entity[] board;
     private int ID = 2;
 
 
@@ -42,7 +42,7 @@ public class Board {
     }
 
 
-    public void addEntity(Entity entity) {
+    private void addEntity(Entity entity) {
         int count = 0;
         while (count <= board.length - 1) {
             if (board[count] == null) {
@@ -54,7 +54,7 @@ public class Board {
 
     }
 
-    public void deleteEntity(int id) {
+    void deleteEntity(int id) {
         for (int i = 0; i <= board.length - 1; i++) {
             if ((board[i] != null) && (board[i].getId() == id)) {
                 board[i] = null;
@@ -63,7 +63,7 @@ public class Board {
         }
     }
 
-    public Entity[][] flatten() {
+    Entity[][] flatten() {
         Entity[][] flatBoard = new Entity[BC.getSize().x][BC.getSize().y];
         for (int i = 0; i <= board.length - 1; i++) {
             if (board[i] != null) {
@@ -82,20 +82,20 @@ public class Board {
             x = (int) (Math.random() * (BC.getSizeX()));
             y = (int) (Math.random() * (BC.getSizeY()));
 
-        } while (possibleSet(x, y) == false);
+        } while (!possibleSet(x, y));
 
         return new XY(x, y);
     }
 
-    public XY getSize() {
+    XY getSize() {
         return BC.getSize();
     }
 
-    public int getSizeX() {
+    int getSizeX() {
         return BC.getSizeX();
     }
 
-    public int getSizeY() {
+    int getSizeY() {
         return BC.getSizeY();
     }
 
@@ -120,19 +120,19 @@ public class Board {
     }
 
 
-    public void createGoodBeast() {
+    void createGoodBeast() {
         addEntity(new GoodBeast(ID++, randomPos()));
     }
 
-    public void createBadBeast() {
+    void createBadBeast() {
         addEntity(new BadBeast(ID++, randomPos()));
     }
 
-    public void createBadPlant() {
+    void createBadPlant() {
         addEntity(new BadPlant(ID++, randomPos()));
     }
 
-    public void createGoodPlant() {
+    void createGoodPlant() {
         addEntity(new GoodPlant(ID++, randomPos()));
     }
 
@@ -152,5 +152,6 @@ public class Board {
         }
         return s;
     }
+
 
 }

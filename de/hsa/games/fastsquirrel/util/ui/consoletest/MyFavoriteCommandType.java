@@ -13,22 +13,21 @@ public enum MyFavoriteCommandType implements CommandTypeInfo {
     private final Class inputType1;
     private final Class inputType2;
 
-   MyFavoriteCommandType(String command, String explanation) {
+    MyFavoriteCommandType(String command, String explanation) {
+
         this.commandType = command;
         this.commandExplanation = explanation;
-        inputType1 = null;
-        inputType2 = null;
+        this.inputType1 = null;
+        this.inputType2 = null;
     }
 
     MyFavoriteCommandType(String command, String s, Class type1, Class type2) {
+
         this.commandType = command;
         this.commandExplanation = s;
         this.inputType1 = type1;
         this.inputType2 = type2;
     }
-
-
-
 
 
     public String getCommandType() {
@@ -46,6 +45,7 @@ public enum MyFavoriteCommandType implements CommandTypeInfo {
     public Class getInputType2() {
         return inputType2;
     }
+
 
     @Override
     public String getName() {
