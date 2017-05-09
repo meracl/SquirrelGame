@@ -8,11 +8,15 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 
 public class ConsoleUI implements UI {
-    public Command getCommand() {
+    public Command getCommand() throws ScanExceptions{
         PrintStream outputStream = System.out;
         BufferedReader inputReader = new BufferedReader(new InputStreamReader(System.in));
         CommandScanner commandScanner = new CommandScanner(GameCommandType.values(), inputReader);
-        return commandScanner.next();
+        try {
+            return commandScanner.next();
+        } catch (ScanExceptions e) {
+            return null;
+        }
     }
 
     public void render(BoardView view) {

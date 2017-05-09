@@ -13,34 +13,31 @@ public class MyFavoriteCommandProcessor {
         CommandScanner commandScanner = new CommandScanner(MyFavoriteCommandType.values(), inputReader);
 
         while (true) { // the loop over all commands with one input line for every command
-            Command command = commandScanner.next();
+            Command command;
             Object[] params;
+            MyFavoriteCommandType commandType;
             try {
+                command = commandScanner.next();
                 params = command.getParams();
-            } catch (NullPointerException e) {
-                throw new ScanExceptions(e);
+                commandType = (MyFavoriteCommandType) command.getCommandType();
+                switch (commandType) {
+                    case EXIT:
+                        System.exit(0);
+                    case HELP:
+                        help();
+                        break;
+                    case ADDI:
+                        addi(params);
+                        break;
+                    case ADDF:
+                        addf(params);
+                        break;
+                    case ECHO:
+                        echo(params);
+                        break;
+                }
+            }catch (ScanExceptions e){
             }
-            MyFavoriteCommandType commandType = (MyFavoriteCommandType) command.getCommandType();
-            switch (commandType) {
-                case EXIT:
-                    System.exit(0);
-                case HELP:
-                    help();
-                    break;
-                case ADDI:
-                    addi(params);
-                    break;
-                case ADDF:
-                    addf(params);
-                    break;
-                case ECHO:
-                    echo(params);
-                    break;
-
-
-            }
-
-
         }
     }
 

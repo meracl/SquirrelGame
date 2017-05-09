@@ -1,5 +1,4 @@
-package de.hsa.games.fastsquirrel.util.ui.consoletest;
-
+package de.hsa.games.fastsquirrel.console;
 
 public class ScanExceptions extends Exception{
     ScanExceptions(String string) {
