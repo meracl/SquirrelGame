@@ -12,8 +12,8 @@ public class ConsoleSinglePlayer extends Game {
     private HandOperatedMasterSquirrel player = new HandOperatedMasterSquirrel(1);
     private XY squirrelMove = new XY(0, 0);
 
-    State state;
-    Board board;
+    private State state;
+    private Board board;
 
 
     public ConsoleSinglePlayer() {
@@ -28,7 +28,8 @@ public class ConsoleSinglePlayer extends Game {
 
     protected void processInput() {
         Command command;
-        Object[] params = new Object[0];
+        Object[] params;
+        Method method;
         try {
             command = ui.getCommand();
 
@@ -36,23 +37,20 @@ public class ConsoleSinglePlayer extends Game {
         } catch (ScanExceptions e) {
             command = null;
         }
-        if(command!=null){
-            params = command.getParams();
-        }
         if (command != null) {
+            params = command.getParams();
             try {
+                Class[] classArray = getAllClasses(params);
                 GameCommandType commandType = (GameCommandType) command.getCommandType();
-                Method method = this.getClass().getDeclaredMethod(commandType.getName(), (Class<?>[]) params);
-                method.invoke(this);
-            } catch (Exception e) {
-                System.out.println("test");
+                method = this.getClass().getDeclaredMethod(commandType.getName(), classArray);
+                method.invoke(this, params);
+            } catch (Exception ignored) {
             }
         }
     }
 
     @SuppressWarnings("unused")
-    private void n(Object[] params) {
-        int energy = (int) params[0];
+    void n(Integer energy) {
         player.updateEnergy(-energy);
         XY xy;
 
@@ -113,4 +111,14 @@ public class ConsoleSinglePlayer extends Game {
         }
     }
 
+    private Class[] getAllClasses(Object[] params) {
+        if (params != null) {
+            Class[] classArray = new Class[params.length];
+            for (int i = 0; i <= classArray.length - 1; i++) {
+                classArray[i] = params[i].getClass();
+            }
+            return classArray;
+        } else
+            return null;
+    }
 }

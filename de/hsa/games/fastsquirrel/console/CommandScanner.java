@@ -10,9 +10,9 @@ class CommandScanner {
     private BufferedReader inputStream;
     PrintStream outputStream;
 
-    Command next() throws ScanExceptions{
+    Command next() throws ScanExceptions {
         String input = null;
-        String[] splitedInput = new String[0];
+        String[] splitedInput;
 
         try {
             input = inputStream.readLine();
@@ -21,12 +21,14 @@ class CommandScanner {
         }
 
         splitedInput = input.split(" ");
-
+        if (splitedInput.length == 0) {
+            throw new ScanExceptions("no input");
+        }
         for (int i = 0; i <= commandTypeInfos.length - 1; i++) {
             if (commandTypeInfos[i].getName().equals(splitedInput[0])) {
                 Class<?>[] param = commandTypeInfos[i].getParamTypes();
                 if (param.length != 0) {
-                    Object[] paramArr = new Object[splitedInput.length];
+                    Object[] paramArr = new Object[splitedInput.length - 1];
                     for (int j = 1; j <= splitedInput.length - 1; j++) {
                         try {
                             switch (param[j - 1].getName()) {
@@ -46,8 +48,10 @@ class CommandScanner {
                         } catch (NumberFormatException e) {
                             throw new ScanExceptions("parameter " + j + " got the wrong data type");
                         }
+
+                        return new Command(commandTypeInfos[i], paramArr);
                     }
-                    return new Command(commandTypeInfos[i], paramArr);
+                    return new Command(commandTypeInfos[i], null);
                 }
 
             }
